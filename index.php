@@ -1,7 +1,4 @@
-<?php 
-	include("header.php");
-?>
-<p>hello</p>
 <?php
-	include("footer.php");
+include 'inc/header.php';
+include 'inc/footer.php';
 ?>
