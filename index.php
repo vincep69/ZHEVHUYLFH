@@ -39,7 +39,7 @@ else
 			$_SESSION['id'] = $data['VIS_MATRICULE'];
 			$message = '<p>Bienvenue '.$data['VIS_PRENOM'].' '.$data['VIS_NOM'].', 
 				vous êtes maintenant connecté!</p>';
-			/*header('Location: index.php');*/
+			header('Location: pages/index.php');
 		}
 		else // Acces pas OK !
 		{
