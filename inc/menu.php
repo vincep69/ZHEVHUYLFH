@@ -11,7 +11,38 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li>
-            <a href="index.php">Accueil</a>
+            <a href="/ZHEVHUYLFH/pages/index.php">Accueil</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Médicament<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/medicament/index.php">Liste</a>
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/medicament/medicament_upd.php">Création</a>
+            </ul>
+        </li>
+        <li>
+            <a href="/ZHEVHUYLFH/pages/medicament/index.php">Med Liste</a>
+        </li>
+        <li>
+            <a href="/ZHEVHUYLFH/pages/medicament/medicament_upd.php">Med upd</a>
+        </li>
+        <li>
+            <a href="/ZHEVHUYLFH/pages/praticien/index.php">Praticien Liste</a>
+        </li>
+        <li>
+            <a href="/ZHEVHUYLFH/pages/praticien/praticien_upd.php">Praticien upd</a>
+        </li>
+        <li>
+            <a href="/ZHEVHUYLFH/pages/profil/index.php">employé Liste</a>
+        </li>
+        <li>
+            <a href="/ZHEVHUYLFH/pages/profil/profil_upd.php">employé upd</a>
+        </li>
+        <li>
+            <a href="/ZHEVHUYLFH/pages/rapport/index.php">rapport Liste</a>
+        </li>
+        <li>
+            <a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php">rapport upd</a>
         </li>
         <!-- <li>
             <a href="map.php">Recherche</a>
