@@ -20,7 +20,29 @@
                 <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/medicament/medicament_upd.php">Création</a>
             </ul>
         </li>
-        <li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">praticien<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/praticien/index.php">Liste</a>
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/praticien/praticien_upd.php">Création</a>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">employé<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/profil/index.php">Liste</a>
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/profil/profil_upd.php">Création</a>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rapport<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/rapport/index.php">Liste</a>
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php">Création</a>
+            </ul>
+        </li>
+
+        <!-- <li>
             <a href="/ZHEVHUYLFH/pages/medicament/index.php">Med Liste</a>
         </li>
         <li>
@@ -43,7 +65,7 @@
         </li>
         <li>
             <a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php">rapport upd</a>
-        </li>
+        </li> -->
         <!-- <li>
             <a href="map.php">Recherche</a>
         </li>
