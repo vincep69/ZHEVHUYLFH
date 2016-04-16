@@ -23,10 +23,10 @@ $reponse = $db->query('SELECT * FROM ppe_visiteur ORDER BY VIS_MATRICULE ASC');
 	<?php
 	while ($donnees = $reponse->fetch()) {
 		?>
-		<a href="/ZHEVHUYLFH/pages/profil/profil_upd.php?matricule=<?php echo $donnees['VIS_MATRICULE'] ?>'">
+		
 			<tr>
-				<td>
-					<?php echo $donnees['VIS_MATRICULE'] ?>
+				<td><a href="/ZHEVHUYLFH/pages/profil/profil_upd.php?matricule=<?php echo $donnees['VIS_MATRICULE'] ?>">
+					<?php echo $donnees['VIS_MATRICULE'] ?></a>
 				</td>
 				<td>
 					<?php echo $donnees['VIS_NOM'] ?>
@@ -38,7 +38,7 @@ $reponse = $db->query('SELECT * FROM ppe_visiteur ORDER BY VIS_MATRICULE ASC');
 					<?php echo $donnees['VIS_VILLE'] ?>
 				</td>
 			</tr>
-		</a>
+		
 		<?php
 		}
 		$reponse->closeCursor();
