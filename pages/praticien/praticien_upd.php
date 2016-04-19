@@ -63,12 +63,16 @@ if (isset($_GET['numero'])) {
 	        $query->execute();
 	        $query->CloseCursor();
 		}
-			
+
 }
 ?>
 
 <form method="post" action="praticien_upd.php">
-	<input type="hidden" name="modif" value="<?php echo $modif ?>">
+	<?php
+	if (isset($modif)) {
+		?><input type="hidden" name="modif" value="<?php echo $modif ?>"><?php
+	}
+	?>
 	<?php
 	if (isset($_GET['numero'])) {
 		?><input type="hidden" name="grade" value="<?php echo $data['PRA_NUM']; ?>"><?php
@@ -89,7 +93,7 @@ if (isset($_GET['numero'])) {
 					<?php
 				}
 		  	}
-			  	
+
 		  ?>
 		</div>
 	</div>

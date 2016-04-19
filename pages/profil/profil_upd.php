@@ -63,14 +63,18 @@ if (isset($_GET['matricule'])) {
 	        $query->execute();
 	        $query->CloseCursor();
 		}
-			
+
 }
 
 /*echo $data['VIS_NOM'];*/
 ?>
 
 <form method="post" action="profil_upd.php">
-	<input type="hidden" name="modif" value="<?php echo $modif ?>">
+	<?php
+	if (isset($modif)) {
+		?><input type="hidden" name="modif" value="<?php echo $modif ?>"><?php
+	}
+	?>
 	<?php
 	if (isset($_GET['matricule'])) {
 		?><input type="hidden" name="grade" value="<?php echo $data['VIS_GRADE']; ?>"><?php
@@ -91,7 +95,7 @@ if (isset($_GET['matricule'])) {
 					<?php
 				}
 		  	}
-			  	
+
 		  ?>
 		</div>
 	</div>
