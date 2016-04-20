@@ -9,34 +9,35 @@ if (isset($_GET['meddepotlegal'])) {
 		$data=$query->fetch();
 		$modif = 1;
 }elseif (isset($_POST['meddepotlegal'])) {
-		if ($_POST['modif']==1) {
-			$meddepotlegal = $_POST['meddepotlegal'];
-			$nom = $_POST['nom'];
-			$code = $_POST['code'];
-			$medcompo = md5($_POST['medcompo']);
-			$effet = $_POST['effet'];
-			$contreindic = $_POST['contreindic'];
-			$prixechantille = $_POST['prixechantille'];
+		if (isset($modif)) {
+			if ($_POST['modif']==1) {
+				$meddepotlegal = $_POST['meddepotlegal'];
+				$nom = $_POST['nom'];
+				$code = $_POST['code'];
+				$medcompo = md5($_POST['medcompo']);
+				$effet = $_POST['effet'];
+				$contreindic = $_POST['contreindic'];
+				$prixechantille = $_POST['prixechantille'];
 
-			$query=$db->prepare('UPDATE ppe_medicament
-				SET MED_DEPOTLEGAL = :meddepotlegal,
-				MED_NOMCOMMERCIAL = :nom,
-				FAM_CODE = :code,
-				MED_COMPOSITION = :medcompo,
-				MED_EFFETS = :effet,
-				MED_CONTREINDIC = :contreindic,
-				MED_PRIXECHANTILLON = :prixechantille,
-				WHERE MED_DEPOTLEGAL = :meddepotlegal');
-			$query->bindValue(':meddepotlegal', $meddepotlegal, PDO::PARAM_STR);
-			$query->bindValue(':nom', $nom, PDO::PARAM_STR);
-			$query->bindValue(':code', $code, PDO::PARAM_STR);
-			$query->bindValue(':medcompo', $medcompo, PDO::PARAM_STR);
-			$query->bindValue(':effet', $effet, PDO::PARAM_STR);
-			$query->bindValue(':contreindic', $contreindic, PDO::PARAM_STR);
-			$query->bindValue(':prixechantille', $prixechantille, PDO::PARAM_STR);
-	        $query->execute();
-	        $query->CloseCursor();
-
+				$query=$db->prepare('UPDATE ppe_medicament
+					SET MED_DEPOTLEGAL = :meddepotlegal,
+					MED_NOMCOMMERCIAL = :nom,
+					FAM_CODE = :code,
+					MED_COMPOSITION = :medcompo,
+					MED_EFFETS = :effet,
+					MED_CONTREINDIC = :contreindic,
+					MED_PRIXECHANTILLON = :prixechantille,
+					WHERE MED_DEPOTLEGAL = :meddepotlegal');
+				$query->bindValue(':meddepotlegal', $meddepotlegal, PDO::PARAM_STR);
+				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
+				$query->bindValue(':code', $code, PDO::PARAM_STR);
+				$query->bindValue(':medcompo', $medcompo, PDO::PARAM_STR);
+				$query->bindValue(':effet', $effet, PDO::PARAM_STR);
+				$query->bindValue(':contreindic', $contreindic, PDO::PARAM_STR);
+				$query->bindValue(':prixechantille', $prixechantille, PDO::PARAM_STR);
+		        $query->execute();
+		        $query->CloseCursor();
+					}
 		}else{
 			$meddepotlegal = $_POST['meddepotlegal'];
 			$nom = $_POST['nom'];
@@ -48,7 +49,7 @@ if (isset($_GET['meddepotlegal'])) {
 			$grade = 1;
 
 	        $query=$db->prepare('INSERT INTO ppe_medicament (MED_DEPOTLEGAL, MED_NOMCOMMERCIAL, FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON)
-	        VALUES (:meddepotlegal, :nom, :code, :medcompo, :effet, :contreindic, :prixechantille)');  
+	        VALUES (:meddepotlegal, :nom, :code, :medcompo, :effet, :contreindic, :prixechantille)');
 			$query->bindValue(':meddepotlegal', $meddepotlegal, PDO::PARAM_STR);
 			$query->bindValue(':nom', $nom, PDO::PARAM_STR);
 			$query->bindValue(':code', $code, PDO::PARAM_STR);
@@ -59,7 +60,7 @@ if (isset($_GET['meddepotlegal'])) {
 	        $query->execute();
 	        $query->CloseCursor();
 		}
-			
+
 }
 
 /*echo $data['MED_NOMCOMMERCIAL'];*/
@@ -69,9 +70,10 @@ if (isset($_GET['meddepotlegal'])) {
 
 	<?php
 	if (isset($modif)) {
-
-	?><input type="hidden" name="modif" value="<?php echo $modif ?>">
-	<?php 	}
+		?><input type="hidden" name="modif" value="<?php echo $modif ?>"><?php
+	}
+	?>
+	<?php
 	if (isset($_GET['meddepotlegal'])) {
 		?><input type="hidden" name="grade" value="<?php echo $data['MED_DEPOTLEGAL']; ?>"><?php
 	}
@@ -91,7 +93,7 @@ if (isset($_GET['meddepotlegal'])) {
 					<?php
 				}
 		  	}
-			  	
+
 		  ?>
 		</div>
 	</div>
