@@ -9,7 +9,7 @@ if (isset($_GET['meddepotlegal'])) {
 		$data=$query->fetch();
 		$modif = 1;
 }elseif (isset($_POST['meddepotlegal'])) {
-		if (isset($modif)) {
+		if (isset($_POST['modif'])) {
 			if ($_POST['modif']==1) {
 				$meddepotlegal = $_POST['meddepotlegal'];
 				$nom = $_POST['nom'];

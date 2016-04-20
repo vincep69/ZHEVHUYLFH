@@ -9,37 +9,38 @@ if (isset($_GET['numero'])) {
 		$data=$query->fetch();
 		$modif = 1;
 }elseif (isset($_POST['numero'])) {
-		if ($_POST['modif']==1) {
-			$numero = $_POST['numero'];
-			$nom = $_POST['nom'];
-			$prenom = $_POST['prenom'];
-			$adresse = $_POST['adresse'];
-			$cp = $_POST['cp'];
-			$ville = $_POST['ville'];
-			$notoriete = $_POST['notoriete'];
-			$code = $_POST['code'];
+		if (isset($_POST['modif'])) {
+			if ($_POST['modif']==1) {
+				$numero = $_POST['numero'];
+				$nom = $_POST['nom'];
+				$prenom = $_POST['prenom'];
+				$adresse = $_POST['adresse'];
+				$cp = $_POST['cp'];
+				$ville = $_POST['ville'];
+				$notoriete = $_POST['notoriete'];
+				$code = $_POST['code'];
 
-			$query=$db->prepare('UPDATE ppe_praticien
-				SET PRA_NUM = :numero,
-				PRA_NOM = :nom,
-				PRA_PRENOM = :prenom,
-				PRA_ADRESSE = :adresse,
-				PRA_CP = :cp,
-				PRA_VILLE = :ville,
-				PRA_COEFNOTORIETE = :notoriete,
-				TYP_CODE = :code
-				WHERE PRA_NUM = :numero');
-			$query->bindValue(':numero', $numero, PDO::PARAM_STR);
-			$query->bindValue(':nom', $nom, PDO::PARAM_STR);
-			$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-			$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
-			$query->bindValue(':cp', $cp, PDO::PARAM_STR);
-			$query->bindValue(':ville', $ville, PDO::PARAM_STR);
-			$query->bindValue(':notoriete', $notoriete, PDO::PARAM_STR);
-			$query->bindValue(':code', $code, PDO::PARAM_STR);
-	        $query->execute();
-	        $query->CloseCursor();
-
+				$query=$db->prepare('UPDATE ppe_praticien
+					SET PRA_NUM = :numero,
+					PRA_NOM = :nom,
+					PRA_PRENOM = :prenom,
+					PRA_ADRESSE = :adresse,
+					PRA_CP = :cp,
+					PRA_VILLE = :ville,
+					PRA_COEFNOTORIETE = :notoriete,
+					TYP_CODE = :code
+					WHERE PRA_NUM = :numero');
+				$query->bindValue(':numero', $numero, PDO::PARAM_STR);
+				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
+				$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+				$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
+				$query->bindValue(':cp', $cp, PDO::PARAM_STR);
+				$query->bindValue(':ville', $ville, PDO::PARAM_STR);
+				$query->bindValue(':notoriete', $notoriete, PDO::PARAM_STR);
+				$query->bindValue(':code', $code, PDO::PARAM_STR);
+		        $query->execute();
+		        $query->CloseCursor();
+						}
 		}else{
 			$numero = $_POST['numero'];
 			$nom = $_POST['nom'];

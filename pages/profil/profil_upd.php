@@ -9,37 +9,38 @@ if (isset($_GET['matricule'])) {
 		$data=$query->fetch();
 		$modif = 1;
 }elseif (isset($_POST['matricule'])) {
-		if ($_POST['modif']==1) {
-			$matricule = $_POST['matricule'];
-			$nom = $_POST['nom'];
-			$prenom = $_POST['prenom'];
-			$password = md5($_POST['password']);
-			$adresse = $_POST['adresse'];
-			$cp = $_POST['cp'];
-			$ville = $_POST['ville'];
-			$grade = $_POST['grade'];
+		if (isset($_POST['modif'])) {
+			if ($_POST['modif']==1) {
+				$matricule = $_POST['matricule'];
+				$nom = $_POST['nom'];
+				$prenom = $_POST['prenom'];
+				$password = md5($_POST['password']);
+				$adresse = $_POST['adresse'];
+				$cp = $_POST['cp'];
+				$ville = $_POST['ville'];
+				$grade = $_POST['grade'];
 
-			$query=$db->prepare('UPDATE ppe_visiteur
-				SET VIS_MATRICULE = :matricule,
-				VIS_NOM = :nom,
-				VIS_PRENOM = :prenom,
-				VIS_PASSWORD = :password,
-				VIS_GRADE = :grade,
-				VIS_ADRESSE = :adresse,
-				VIS_CP = :cp,
-				VIS_VILLE = :ville
-				WHERE VIS_MATRICULE = :matricule');
-			$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
-			$query->bindValue(':nom', $nom, PDO::PARAM_STR);
-			$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-			$query->bindValue(':password', $password, PDO::PARAM_STR);
-			$query->bindValue(':grade', $grade, PDO::PARAM_STR);
-			$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
-			$query->bindValue(':cp', $cp, PDO::PARAM_STR);
-			$query->bindValue(':ville', $ville, PDO::PARAM_STR);
-	        $query->execute();
-	        $query->CloseCursor();
-
+				$query=$db->prepare('UPDATE ppe_visiteur
+					SET VIS_MATRICULE = :matricule,
+					VIS_NOM = :nom,
+					VIS_PRENOM = :prenom,
+					VIS_PASSWORD = :password,
+					VIS_GRADE = :grade,
+					VIS_ADRESSE = :adresse,
+					VIS_CP = :cp,
+					VIS_VILLE = :ville
+					WHERE VIS_MATRICULE = :matricule');
+				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
+				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
+				$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+				$query->bindValue(':password', $password, PDO::PARAM_STR);
+				$query->bindValue(':grade', $grade, PDO::PARAM_STR);
+				$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
+				$query->bindValue(':cp', $cp, PDO::PARAM_STR);
+				$query->bindValue(':ville', $ville, PDO::PARAM_STR);
+		        $query->execute();
+		        $query->CloseCursor();
+					}
 		}else{
 			$matricule = $_POST['matricule'];
 			$nom = $_POST['nom'];
