@@ -5,3 +5,6 @@
 .navbar{
     border-radius:0px !important;
 }
+form div{
+  margin-bottom: 5px;
+}

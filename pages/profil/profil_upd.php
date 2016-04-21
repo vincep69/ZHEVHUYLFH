@@ -97,6 +97,7 @@ if (isset($_GET['matricule'])) {
 				$query->CloseCursor();
 			}else{
 				echo '<div class="alert alert-warning" role="alert">'.$error.'</div>';
+				
 			}
 		}
 
