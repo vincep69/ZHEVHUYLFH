@@ -38,27 +38,63 @@ if (isset($_GET['meddepotlegal'])) {
 		        $query->execute();
 		        $query->CloseCursor();
 					}
-		}else{
+		}else {
+			$i = 0;
+			$error = "";
 			$meddepotlegal = $_POST['meddepotlegal'];
-			$nom = $_POST['nom'];
-			$code = $_POST['code'];
-			$medcompo = ($_POST['medcompo']);
-			$effet = $_POST['effet'];
-			$contreindic = $_POST['contreindic'];
-			$prixechantille = $_POST['prixechantille'];
+			if (!empty($_POST['nom'])) {
+				$nom = $_POST['nom'];
+			} else {
+				$i++;
+				$error .= "nom non renseigné ";
+			}
+			if (!empty($_POST['code'])) {
+				$code = $_POST['code'];
+			} else {
+				$i++;
+				$error .= "code non renseigné ";
+			}
+			if (!empty($_POST['medcompo'])) {
+				$medcompo = ($_POST['medcompo']);
+			} else {
+				$i++;
+				$error .= "composition non renseigné ";
+			}
+			if (!empty($_POST['effet'])) {
+				$effet = $_POST['effet'];
+			} else {
+				$i++;
+				$error .= "effet non renseignée ";
+			}
+			if (!empty($_POST['contreindic'])) {
+				$contreindic = $_POST['contreindic'];
+			} else {
+				$i++;
+				$error .= "contre indication non renseigné ";
+			}
+			if (!empty($_POST['prixechantille'])) {
+				$ville = $_POST['prixechantille'];
+			} else {
+				$i++;
+				$error .= "prix de l'echantillon non renseignée ";
+			}
 			$grade = 1;
+			if ($i == 0) {
 
-	        $query=$db->prepare('INSERT INTO ppe_medicament (MED_DEPOTLEGAL, MED_NOMCOMMERCIAL, FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON)
+				$query = $db->prepare('INSERT INTO ppe_medicament (MED_DEPOTLEGAL, MED_NOMCOMMERCIAL, FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON)
 	        VALUES (:meddepotlegal, :nom, :code, :medcompo, :effet, :contreindic, :prixechantille)');
-			$query->bindValue(':meddepotlegal', $meddepotlegal, PDO::PARAM_STR);
-			$query->bindValue(':nom', $nom, PDO::PARAM_STR);
-			$query->bindValue(':code', $code, PDO::PARAM_STR);
-			$query->bindValue(':medcompo', $medcompo, PDO::PARAM_STR);
-			$query->bindValue(':effet', $effet, PDO::PARAM_STR);
-			$query->bindValue(':contreindic', $contreindic, PDO::PARAM_STR);
-			$query->bindValue(':prixechantille', $prixechantille, PDO::PARAM_STR);
-	        $query->execute();
-	        $query->CloseCursor();
+				$query->bindValue(':meddepotlegal', $meddepotlegal, PDO::PARAM_STR);
+				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
+				$query->bindValue(':code', $code, PDO::PARAM_STR);
+				$query->bindValue(':medcompo', $medcompo, PDO::PARAM_STR);
+				$query->bindValue(':effet', $effet, PDO::PARAM_STR);
+				$query->bindValue(':contreindic', $contreindic, PDO::PARAM_STR);
+				$query->bindValue(':prixechantille', $prixechantille, PDO::PARAM_STR);
+				$query->execute();
+				$query->CloseCursor();
+			} else {
+				echo '<div class="alert alert-warning" role="alert">' . $error . '</div>';
+			}
 		}
 
 }
@@ -204,8 +240,6 @@ if (isset($_GET['meddepotlegal'])) {
 			}
 		  ?>
 		</div>
-	</div>
-
 	</div>
 <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 	<div class="input-group">
