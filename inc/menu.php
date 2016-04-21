@@ -4,7 +4,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index.php">PPE3</a>
     </div>
@@ -100,3 +100,5 @@
     </div>
   </div>
 </nav>
+
+<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">

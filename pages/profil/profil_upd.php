@@ -42,27 +42,62 @@ if (isset($_GET['matricule'])) {
 		        $query->CloseCursor();
 					}
 		}else{
+			$i=0;
+			$error="";
 			$matricule = $_POST['matricule'];
-			$nom = $_POST['nom'];
-			$prenom = $_POST['prenom'];
-			$password = md5($_POST['password']);
-			$adresse = $_POST['adresse'];
-			$cp = $_POST['cp'];
-			$ville = $_POST['ville'];
+			if (!empty($_POST['nom'])) {
+				$nom = $_POST['nom'];
+			}else {
+				$i++;
+				$error.="nom non renseigné ";
+			}
+			if (!empty($_POST['prenom'])) {
+				$prenom = $_POST['prenom'];
+			}else {
+				$i++;
+				$error.="prenom non renseigné ";
+			}
+			if (!empty($_POST['password'])) {
+				$password = md5($_POST['password']);
+			}else {
+				$i++;
+				$error.="mot de passe non renseigné ";
+			}
+			if (!empty($_POST['adresse'])) {
+				$adresse = $_POST['adresse'];
+			}else {
+				$i++;
+				$error.="adresse non renseignée ";
+			}
+			if (!empty($_POST['cp'])) {
+				$cp = $_POST['cp'];
+			}else {
+				$i++;
+				$error.="code postal non renseigné ";
+			}
+			if (!empty($_POST['ville'])) {
+				$ville = $_POST['ville'];
+			}else {
+				$i++;
+				$error.="ville non renseignée ";
+			}
 			$grade = 1;
-
-	        $query=$db->prepare('INSERT INTO ppe_visiteur (VIS_MATRICULE, VIS_NOM, VIS_PRENOM, VIS_PASSWORD,VIS_GRADE, VIS_ADRESSE,VIS_CP, VIS_VILLE)
-	        VALUES (:matricule, :nom, :prenom, :password, :grade, :adresse, :cp, :ville)');
-			$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
-			$query->bindValue(':nom', $nom, PDO::PARAM_STR);
-			$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-			$query->bindValue(':password', $password, PDO::PARAM_STR);
-			$query->bindValue(':grade', $grade, PDO::PARAM_STR);
-			$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
-			$query->bindValue(':cp', $cp, PDO::PARAM_STR);
-			$query->bindValue(':ville', $ville, PDO::PARAM_STR);
-	        $query->execute();
-	        $query->CloseCursor();
+			if ($i==0) {
+				$query=$db->prepare('INSERT INTO ppe_visiteur (VIS_MATRICULE, VIS_NOM, VIS_PRENOM, VIS_PASSWORD,VIS_GRADE, VIS_ADRESSE,VIS_CP, VIS_VILLE)
+				VALUES (:matricule, :nom, :prenom, :password, :grade, :adresse, :cp, :ville)');
+				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
+				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
+				$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+				$query->bindValue(':password', $password, PDO::PARAM_STR);
+				$query->bindValue(':grade', $grade, PDO::PARAM_STR);
+				$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
+				$query->bindValue(':cp', $cp, PDO::PARAM_STR);
+				$query->bindValue(':ville', $ville, PDO::PARAM_STR);
+				$query->execute();
+				$query->CloseCursor();
+			}else{
+				echo '<div class="alert alert-warning" role="alert">'.$error.'</div>';
+			}
 		}
 
 }
