@@ -121,18 +121,14 @@ if (isset($_GET['rapport'])) {
 		<div class="input-group">
 		  	<span class="input-group-addon" id="basic-addon1">Matricule :</span>
 		  	<?php
-		  	if ($_SESSION['grade']<10) {
+		  	if ($_SESSION['grade']<50) {
 		  		?><input type="text" name="matricule" class="form-control" value="<?php echo $data['VIS_MATRICULE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 		  		if (isset($_GET['rapport'])) {
-			  		?>
-						<input type="text" name="matricule" class="form-control" value="<?php echo $data['VIS_MATRICULE']; ?>" aria-describedby="basic-addon1" disabled>
-						<input type="hidden" name="matricule" value="<?php echo $data['VIS_MATRICULE']; ?>">
-						<?php
+			  		?><input type="text" name="matricule" class="form-control" value="<?php echo $data['VIS_MATRICULE']; ?>" aria-describedby="basic-addon1"><?php
 			  	}else{
 					?>
-					<input type="text" name="matricule" class="form-control" value="<?php echo $_SESSION['login']; ?>" aria-describedby="basic-addon1" disabled>
-					<input type="hidden" name="matricule" value="<?php echo $_SESSION['login']; ?>">
+					<input type="text" name="matricule" class="form-control" placeholder="Matricule" aria-describedby="basic-addon1">
 					<?php
 				}
 		  	}
@@ -144,26 +140,14 @@ if (isset($_GET['rapport'])) {
 		<div class="input-group">
 			  <span class="input-group-addon" id="basic-addon1">Numéro de rapport :</span>
 			  <?php
-		  	if ($_SESSION['grade']<10) {
+		  	if ($_SESSION['grade']<50) {
 		  		?><input type="text" name="num" class="form-control" value="<?php echo $data['RAP_NUM']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['rapport'])) {
-			  		?><input type="text" name="num" class="form-control" value="<?php echo $data['RAP_NUM']; ?>" aria-describedby="basic-addon1" disabled>
-						<input type="hidden" name="num" value="<?php echo $data['RAP_NUM']; ?>">
-						<?php
+			  		?><input type="text" name="num" class="form-control" value="<?php echo $data['RAP_NUM']; ?>" aria-describedby="basic-addon1"><?php
 			  	}else{
-						$numerorapport = 0;
-						$numrapport=$db->prepare('SELECT * FROM ppe_rapport_visite WHERE VIS_MATRICULE = :matricule ORDER BY RAP_NUM ASC');
-						$numrapport->bindValue(':matricule',$_SESSION['login'], PDO::PARAM_STR);
-						$numrapport->execute();
-						// $reponse = $db->query('SELECT * FROM ppe_rapport_visite where  ORDER BY VIS_MATRICULE ASC');
-						while ($numrapports = $numrapport->fetch()) {
-							$numerorapport = $numrapports['RAP_NUM']+1;
-						}
-						$numrapport->closeCursor();
 					?>
-			  		<input type="text" name="num" class="form-control" value="<?php echo $numerorapport ?>" aria-describedby="basic-addon1" disabled>
-						<input type="hidden" name="num" value="<?php echo $numerorapport ?>">
+			  		<input type="text" name="num" class="form-control" placeholder="Numéro" aria-describedby="basic-addon1">
 			  		<?php
 				}
 			}
@@ -174,7 +158,7 @@ if (isset($_GET['rapport'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Motif</span>
 		  <?php
-		  if ($_SESSION['grade']<10) {
+		  if ($_SESSION['grade']<50) {
 		  		?><input type="text" name="motif" class="form-control" value="<?php echo $data['RAP_MOTIF']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['rapport'])) {
@@ -193,7 +177,7 @@ if (isset($_GET['rapport'])) {
 		  <span class="input-group-addon" id="basic-addon1">Praticien</span>
 		  <?php
 			$praticiens = $db->query('SELECT * FROM ppe_praticien ORDER BY PRA_NUM');
-		  if ($_SESSION['grade']<10) {
+		  if ($_SESSION['grade']<50) {
 		  		?><input type="text" name="numpraticien" class="form-control" value="<?php echo $data['PRA_NUM']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['rapport'])) {
@@ -239,7 +223,7 @@ if (isset($_GET['rapport'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Bilan :</span>
 		  <?php
-		  if ($_SESSION['grade']<10) {
+		  if ($_SESSION['grade']<50) {
 		  		?><textarea type="text" name="bilan" class="form-control" value="<?php echo $data['RAP_BILAN']; ?>" aria-describedby="basic-addon1" disabled><?php echo $data['RAP_BILAN']; ?></textarea><?php
 		  	}else{
 			  	if (isset($_GET['rapport'])) {
