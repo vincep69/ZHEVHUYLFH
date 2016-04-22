@@ -3,7 +3,6 @@ include '../../inc/header.php';
 include '../../inc/menu.php';
 $reponse = $db->query('SELECT * FROM ppe_medicament ORDER BY MED_DEPOTLEGAL ASC');
 ?>
-
 <table class="table">
 	<thead>
 		<th>
