@@ -184,10 +184,10 @@ if (isset($_GET['depotlegal'])) {
 		  <span class="input-group-addon" id="basic-addon1">Composition :</span>
 		  <?php
 		  if ($_SESSION['grade']<50) {
-		  		?><textarea type="text" name="medcompo" class="form-control" value="" aria-describedby="basic-addon1" disabled><?php echo $data['MED_COMPOSITION']; ?></textarea><?php
+		  		?><textarea type="text" name="medcompo" class="form-control" rows="4" value="" aria-describedby="basic-addon1" disabled><?php echo $data['MED_COMPOSITION']; ?></textarea><?php
 		  	}else{
 			  	if (isset($_GET['depotlegal'])) {
-			  		?><textarea type="text" name="medcompo" class="form-control" value="" aria-describedby="basic-addon1"><?php echo $data['MED_COMPOSITION']; ?></textarea><?php
+			  		?><textarea type="text" name="medcompo" class="form-control" rows="4" value="" aria-describedby="basic-addon1"><?php echo $data['MED_COMPOSITION']; ?></textarea><?php
 			  	}else{
 					?>
 			  		<textarea type="text" name="medcompo" class="form-control" placeholder="Composition" aria-describedby="basic-addon1"></textarea>
@@ -202,10 +202,10 @@ if (isset($_GET['depotlegal'])) {
 		  <span class="input-group-addon" id="basic-addon1">Effet(s) a noter :</span>
 		  <?php
 		  if ($_SESSION['grade']<50) {
-		  		?><textarea type="text" name="effet" class="form-control" value="" aria-describedby="basic-addon1" disabled><?php echo $data['MED_EFFETS']; ?></textarea><?php
+		  		?><textarea type="text" name="effet" class="form-control" rows="4" value="" aria-describedby="basic-addon1" disabled><?php echo $data['MED_EFFETS']; ?></textarea><?php
 		  	}else{
 			  	if (isset($_GET['depotlegal'])) {
-			  		?><textarea type="text" name="effet" class="form-control" value="" aria-describedby="basic-addon1"><?php echo $data['MED_EFFETS']; ?></textarea><?php
+			  		?><textarea type="text" name="effet" class="form-control" rows="4" value="" aria-describedby="basic-addon1"><?php echo $data['MED_EFFETS']; ?></textarea><?php
 			  	}else{
 					?>
 			  		<textarea type="text" name="effet" class="form-control" placeholder="Effet" aria-describedby="basic-addon1"></textarea>
@@ -220,10 +220,10 @@ if (isset($_GET['depotlegal'])) {
 		  <span class="input-group-addon" id="basic-addon1">Contre indication :</span>
 		  <?php
 		  if ($_SESSION['grade']<50) {
-		  		?><textarea type="text" name="contreindic" class="form-control" value="" ari&a-describedby="basic-addon1" disabled><?php echo $data['MED_CONTREINDIC']; ?></textarea><?php
+		  		?><textarea type="text" name="contreindic" class="form-control" rows="4" value="" ari&a-describedby="basic-addon1" disabled><?php echo $data['MED_CONTREINDIC']; ?></textarea><?php
 		  	}else{
 			  	if (isset($_GET['depotlegal'])) {
-			  		?><textarea type="text" name="contreindic" class="form-control" value="" aria-describedby="basic-addon1"><?php echo $data['MED_CONTREINDIC']; ?></textarea><?php
+			  		?><textarea type="text" name="contreindic" class="form-control" rows="4" value="" aria-describedby="basic-addon1"><?php echo $data['MED_CONTREINDIC']; ?></textarea><?php
 			  	}else{
 					?>
 			  		<textarea type="text" name="contreindic" class="form-control" placeholder="Contre indication" aria-describedby="basic-addon1"></textarea>
