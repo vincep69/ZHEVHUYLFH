@@ -59,7 +59,7 @@ if (isset($_GET['matvis'])) {
         <td>
 					<?php echo $donnees['VIS_MATRICULE'] ?>
 				</td>
-				<td><a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php?rapport=<?php echo $donnees['RAP_NUM'] ?>">
+				<td><a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php?rapport=<?php echo $donnees['RAP_NUM'] ?>&mat=<?php echo $donnees['VIS_MATRICULE'] ?>">
 					<?php echo $donnees['RAP_NUM'] ?></a>
 				</td>
 				<td>

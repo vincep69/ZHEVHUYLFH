@@ -2,9 +2,10 @@
 include '../../inc/header.php';
 include '../../inc/menu.php';
 if (isset($_GET['rapport'])) {
-	$reponse = $db->query('SELECT * FROM ppe_rapport_visite WHERE  ORDER BY VIS_MATRICULE ASC');
-	$query=$db->prepare('SELECT * FROM ppe_rapport_visite WHERE RAP_NUM = :rapport');
+	// $reponse = $db->query('SELECT * FROM ppe_rapport_visite WHERE  ORDER BY VIS_MATRICULE ASC');
+	$query=$db->prepare('SELECT * FROM ppe_rapport_visite WHERE RAP_NUM = :rapport AND VIS_MATRICULE = :matricule');
 		$query->bindValue(':rapport',$_GET['rapport'], PDO::PARAM_STR);
+		$query->bindValue(':matricule',$_GET['mat'], PDO::PARAM_STR);
 		$query->execute();
 		$data=$query->fetch();
 		$modif = 1;
@@ -45,7 +46,8 @@ if (isset($_GET['rapport'])) {
   					PRA_NUM = :numpraticien,
   					RAP_BILAN = :bilan,
   					RAP_MOTIF = :motif
-  					WHERE RAP_NUM = :num');
+  					WHERE RAP_NUM = :num
+						AND VIS_MATRICULE = :matricule');
     				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
     				$query->bindValue(':num', $num, PDO::PARAM_STR);
     				$query->bindValue(':numpraticien', $numpraticien, PDO::PARAM_STR);
@@ -53,8 +55,6 @@ if (isset($_GET['rapport'])) {
     				$query->bindValue(':motif', $motif, PDO::PARAM_STR);
 		        $query->execute();
 		        $query->CloseCursor();
-						echo "yes";
-						echo $num;
           }else{
             echo '<div class="alert alert-warning" role="alert">'.$error.'</div>';
           }
