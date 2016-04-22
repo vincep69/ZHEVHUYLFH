@@ -101,7 +101,17 @@ if (isset($_GET['depotlegal'])) {
 
 /*echo $data['MED_NOMCOMMERCIAL'];*/
 ?>
-
+<?php
+if (isset($_GET['depotlegal'])) {
+?>
+<h1>Modification de médicament</h1>
+<?php
+}else{
+	?>
+	<h1>Création de médicament</h1>
+	<?php
+}
+ ?>
 <form method="post" action="medicament_upd.php">
 
 	<?php
