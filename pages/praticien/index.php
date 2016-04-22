@@ -3,7 +3,7 @@ include '../../inc/header.php';
 include '../../inc/menu.php';
 $reponse = $db->query('SELECT * FROM ppe_praticien ORDER BY PRA_NUM ASC');
 ?>
-
+<h1>Liste des praticiens</h1>
 <table class="table">
 	<thead>
 		<th>
