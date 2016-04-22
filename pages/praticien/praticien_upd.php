@@ -49,38 +49,38 @@ if (isset($_GET['numero'])) {
 				$nom = $_POST['nom'];
 			}else{
 				$i++;
-				$error.="nom non renseigné ";
+				$error.="Nom non renseigné <br>";
 			}
 			if (!empty($_POST['prenom'])) {
 				$prenom = $_POST['prenom'];
 			}else{
 				$i++;
-				$error.="prenom non renseigné ";
+				$error.="Prenom non renseigné <br>";
 			}if (!empty($_POST['adresse'])) {
 				$adresse = $_POST['adresse'];
 			}else{
 				$i++;
-				$error.="adresse non renseigné ";
+				$error.="Adresse non renseigné <br>";
 			}if (!empty($_POST['cp'])) {
 				$cp = $_POST['cp'];
 			}else{
 				$i++;
-				$error.="code postal non renseigné ";
+				$error.="Code postal non renseigné <br>";
 			}if (!empty($_POST['ville'])) {
 				$ville = $_POST['ville'];
 			}else{
 				$i++;
-				$error.="ville non renseigné ";
+				$error.="Ville non renseigné <br>";
 			}if (!empty($_POST['notoriete'])) {
 				$notoriete = $_POST['notoriete'];
 			}else{
 				$i++;
-				$error.="coefficient de notoriété non renseigné ";
+				$error.="Coefficient de notoriété non renseigné <br>";
 			}if (!empty($_POST['code'])) {
 				$code = $_POST['code'];
 			}else{
 				$i++;
-				$error.="code non renseigné ";
+				$error.="Code non renseigné <br>";
 			}
 			if ($i==0) {
 		        $query=$db->prepare('INSERT INTO ppe_praticien (PRA_NUM, PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE, TYP_CODE)
