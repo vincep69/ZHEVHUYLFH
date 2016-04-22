@@ -87,13 +87,15 @@ if (isset($_GET['rapport'])) {
 				$i++;
 				$error.="Praticien non renseigné <br>";
 			}
+			$date=date("y.m.d");
 			if ($i==0) {
-				$query=$db->prepare('INSERT INTO ppe_rapport_visite (VIS_MATRICULE, RAP_NUM, RAP_MOTIF, PRA_NUM ,RAP_BILAN)
-				VALUES (:matricule, :num, :motif, :numpraticien, :bilan)');
+				$query=$db->prepare('INSERT INTO ppe_rapport_visite (VIS_MATRICULE, RAP_NUM, RAP_MOTIF, PRA_NUM ,RAP_BILAN, RAP_DATE)
+				VALUES (:matricule, :num, :motif, :numpraticien, :bilan, :date)');
 				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
 				$query->bindValue(':num', $num, PDO::PARAM_STR);
 				$query->bindValue(':motif', $motif, PDO::PARAM_STR);
 				$query->bindValue(':bilan', $bilan, PDO::PARAM_STR);
+				$query->bindValue(':date', $date, PDO::PARAM_STR);
 				$query->bindValue(':numpraticien', $numpraticien, PDO::PARAM_STR);
 				$query->execute();
 				$query->CloseCursor();
