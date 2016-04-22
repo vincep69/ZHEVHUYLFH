@@ -135,7 +135,7 @@ if (isset($_GET['depotlegal'])) {
 			  		?><input type="text" name="depotlegal" class="form-control" value="<?php echo $data['MED_DEPOTLEGAL']; ?>" aria-describedby="basic-addon1"><?php
 			  	}else{
 					?>
-					<input type="text" name="depotlegal" class="form-control" placeholder="depotlegal" aria-describedby="basic-addon1">
+					<input type="text" name="depotlegal" class="form-control" placeholder="Depot Legal" aria-describedby="basic-addon1">
 					<?php
 				}
 		  	}
@@ -154,7 +154,7 @@ if (isset($_GET['depotlegal'])) {
 			  		?><input type="text" name="nom" class="form-control" value="<?php echo $data['MED_NOMCOMMERCIAL']; ?>" aria-describedby="basic-addon1"><?php
 			  	}else{
 					?>
-			  		<input type="text" name="nom" class="form-control" placeholder="nom" aria-describedby="basic-addon1">
+			  		<input type="text" name="nom" class="form-control" placeholder="Nom" aria-describedby="basic-addon1">
 			  		<?php
 				}
 			}
@@ -172,7 +172,7 @@ if (isset($_GET['depotlegal'])) {
 			  		?><input type="text" name="code" class="form-control" value="<?php echo $data['FAM_CODE']; ?>" aria-describedby="basic-addon1"><?php
 			  	}else{
 					?>
-			  		<input type="text" name="code" class="form-control" placeholder="code" aria-describedby="basic-addon1">
+			  		<input type="text" name="code" class="form-control" placeholder="Code" aria-describedby="basic-addon1">
 			  		<?php
 				}
 			}
@@ -190,7 +190,7 @@ if (isset($_GET['depotlegal'])) {
 			  		?><textarea type="text" name="medcompo" class="form-control" style="margin: 0px; width: 235px; height: 147px;" value="" aria-describedby="basic-addon1"><?php echo $data['MED_COMPOSITION']; ?></textarea><?php
 			  	}else{
 					?>
-			  		<textarea type="text" name="medcompo" class="form-control" placeholder="medcompo" aria-describedby="basic-addon1"></textarea>
+			  		<textarea type="text" name="medcompo" class="form-control" placeholder="Composition" aria-describedby="basic-addon1"></textarea>
 			  		<?php
 				}
 			}
@@ -208,7 +208,7 @@ if (isset($_GET['depotlegal'])) {
 			  		?><textarea type="text" name="effet" class="form-control" style="margin: 0px; width: 235px; height: 147px;" value="" aria-describedby="basic-addon1"><?php echo $data['MED_EFFETS']; ?></textarea><?php
 			  	}else{
 					?>
-			  		<textarea type="text" name="effet" class="form-control" placeholder="effet" aria-describedby="basic-addon1"></textarea>
+			  		<textarea type="text" name="effet" class="form-control" placeholder="Effet" aria-describedby="basic-addon1"></textarea>
 			  		<?php
 				}
 			}
@@ -226,7 +226,7 @@ if (isset($_GET['depotlegal'])) {
 			  		?><textarea type="text" name="contreindic" class="form-control" style="margin: 0px; width: 235px; height: 147px;" value="" aria-describedby="basic-addon1"><?php echo $data['MED_CONTREINDIC']; ?></textarea><?php
 			  	}else{
 					?>
-			  		<textarea type="text" name="contreindic" class="form-control" placeholder="contreindic" aria-describedby="basic-addon1"></textarea>
+			  		<textarea type="text" name="contreindic" class="form-control" placeholder="Contre indication" aria-describedby="basic-addon1"></textarea>
 			  		<?php
 				}
 			}
@@ -244,7 +244,7 @@ if (isset($_GET['depotlegal'])) {
 			  				?><input type="text" name="prixechantille" class="form-control" value="NULL" aria-describedby="basic-addon1"><?php
 			  			}else{
 							?>
-			  		<input type="text" name="prixechantille" class="form-control" placeholder="prixechantille" aria-describedby="basic-addon1">
+			  		<input type="text" name="prixechantille" class="form-control" placeholder="Prix" aria-describedby="basic-addon1">
 			  		<?php
 				}
 			}
