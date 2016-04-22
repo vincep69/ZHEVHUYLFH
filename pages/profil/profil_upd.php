@@ -79,11 +79,23 @@ if (isset($_GET['matricule'])) {
 				$i++;
 				$error.="ville non renseignée ";
 			}
+			if (!empty($_POST['numsecteur'])) {
+				$numsecteur = $_POST['numsecteur'];
+			}else {
+				$i++;
+				$error.="Secteur non renseigné <br>";
+			}
+			if (!empty($_POST['numlabo'])) {
+				$numlabo = $_POST['numlabo'];
+			}else {
+				$i++;
+				$error.="Labo non renseigné <br>";
+			}
 			$grade = 1;
 			$date=date("y.m.d");
 			if ($i==0) {
-				$query=$db->prepare('INSERT INTO ppe_visiteur (VIS_MATRICULE, VIS_NOM, VIS_PRENOM, VIS_PASSWORD,VIS_GRADE, VIS_ADRESSE,VIS_CP, VIS_VILLE, VIS_DATEEMBAUCHE)
-				VALUES (:matricule, :nom, :prenom, :password, :grade, :adresse, :cp, :ville, :date)');
+				$query=$db->prepare('INSERT INTO ppe_visiteur (VIS_MATRICULE, VIS_NOM, VIS_PRENOM, VIS_PASSWORD,VIS_GRADE, VIS_ADRESSE,VIS_CP, VIS_VILLE, VIS_DATEEMBAUCHE, LAB_CODE, SEC_CODE)
+				VALUES (:matricule, :nom, :prenom, :password, :grade, :adresse, :cp, :ville, :date, :labo, :secteur)');
 				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
 				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
 				$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
@@ -93,6 +105,8 @@ if (isset($_GET['matricule'])) {
 				$query->bindValue(':cp', $cp, PDO::PARAM_STR);
 				$query->bindValue(':ville', $ville, PDO::PARAM_STR);
 				$query->bindValue(':date', $date, PDO::PARAM_STR);
+				$query->bindValue(':labo', $numlabo, PDO::PARAM_STR);
+				$query->bindValue(':secteur', $numsecteur, PDO::PARAM_STR);
 				$query->execute();
 				$query->CloseCursor();
 			}else{
@@ -251,6 +265,100 @@ if (isset($_GET['matricule'])) {
 			  	}else{
 					?>
 			  		<input type="text" name="ville" class="form-control" placeholder="Ville" aria-describedby="basic-addon1">
+			  		<?php
+				}
+			}
+		  ?>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">Secteur</span>
+		  <?php
+			$secteurs = $db->query('SELECT * FROM ppe_secteur ORDER BY SEC_CODE');
+		  if ($_SESSION['grade']<10) {
+		  		?><input type="text" name="numsecteur" class="form-control" value="<?php echo $data['SEC_CODE']; ?>" aria-describedby="basic-addon1" disabled><?php
+		  	}else{
+			  	if (isset($_GET['rapport'])) {
+			  		?>
+						<!-- <input type="text" name="numsecteur" class="form-control" value="<?php echo $data['SEC_CODE']; ?>" aria-describedby="basic-addon1"> -->
+						<select name="numsecteur" class="form-control">
+							<?php
+							while ($optionsecteurs = $secteurs->fetch()) {
+								if ($optionsecteurs['SEC_CODE']==$data['SEC_CODE']) {
+									?>
+									<option selected value="<?php echo $optionsecteurs['SEC_CODE']; ?>"><?php echo $optionsecteurs['SEC_CODE']." ".$optionsecteurs['SEC_LIBELLE']; ?></option>
+									<?php
+								}else{
+									?>
+							  	<option value="<?php echo $optionsecteurs['SEC_CODE']; ?>"><?php echo $optionsecteurs['SEC_CODE']." ".$optionsecteurs['SEC_LIBELLE']; ?></option>
+									<?php
+								}
+							}
+							$secteurs->closeCursor();
+							?>
+						</select>
+						<?php
+			  	}else{
+					?>
+			  		<!-- <input type="text" name="numpraticien" class="form-control" placeholder="numéro" aria-describedby="basic-addon1"> -->
+						<select name="numsecteur" class="form-control">
+							<?php
+							while ($optionsecteurs = $secteurs->fetch()) {
+								?>
+						  	<option value="<?php echo $optionsecteurs['SEC_CODE']; ?>"><?php echo $optionsecteurs['SEC_CODE']." ".$optionsecteurs['SEC_LIBELLE']; ?></option>
+								<?php
+							}
+							$secteurs->closeCursor();
+							?>
+						</select>
+			  		<?php
+				}
+			}
+		  ?>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">Labo</span>
+		  <?php
+			$labos = $db->query('SELECT * FROM ppe_labo ORDER BY LAB_CODE');
+		  if ($_SESSION['grade']<10) {
+		  		?><input type="text" name="numlabo" class="form-control" value="<?php echo $data['LAB_CODE']; ?>" aria-describedby="basic-addon1" disabled><?php
+		  	}else{
+			  	if (isset($_GET['rapport'])) {
+			  		?>
+						<!-- <input type="text" name="numlabo" class="form-control" value="<?php echo $data['LAB_CODE']; ?>" aria-describedby="basic-addon1"> -->
+						<select name="numlabo" class="form-control">
+							<?php
+							while ($optionlabos = $labos->fetch()) {
+								if ($optionlabos['LAB_CODE']==$data['LAB_CODE']) {
+									?>
+									<option selected value="<?php echo $optionlabos['LAB_CODE']; ?>"><?php echo $optionlabos['LAB_CODE']." ".$optionlabos['LAB_NOM']; ?></option>
+									<?php
+								}else{
+									?>
+							  	<option value="<?php echo $optionlabos['LAB_CODE']; ?>"><?php echo $optionlabos['LAB_CODE']." ".$optionlabos['LAB_NOM']; ?></option>
+									<?php
+								}
+							}
+							$labos->closeCursor();
+							?>
+						</select>
+						<?php
+			  	}else{
+					?>
+			  		<!-- <input type="text" name="numpraticien" class="form-control" placeholder="numéro" aria-describedby="basic-addon1"> -->
+						<select name="numlabo" class="form-control">
+							<?php
+							while ($optionlabos = $labos->fetch()) {
+								?>
+						  	<option value="<?php echo $optionlabos['LAB_CODE']; ?>"><?php echo $optionlabos['LAB_CODE']." ".$optionlabos['LAB_NOM']; ?></option>
+								<?php
+							}
+							$labos->closeCursor();
+							?>
+						</select>
 			  		<?php
 				}
 			}
