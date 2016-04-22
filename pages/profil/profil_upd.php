@@ -80,9 +80,10 @@ if (isset($_GET['matricule'])) {
 				$error.="ville non renseignée ";
 			}
 			$grade = 1;
+			$date=date("y.m.d");
 			if ($i==0) {
-				$query=$db->prepare('INSERT INTO ppe_visiteur (VIS_MATRICULE, VIS_NOM, VIS_PRENOM, VIS_PASSWORD,VIS_GRADE, VIS_ADRESSE,VIS_CP, VIS_VILLE)
-				VALUES (:matricule, :nom, :prenom, :password, :grade, :adresse, :cp, :ville)');
+				$query=$db->prepare('INSERT INTO ppe_visiteur (VIS_MATRICULE, VIS_NOM, VIS_PRENOM, VIS_PASSWORD,VIS_GRADE, VIS_ADRESSE,VIS_CP, VIS_VILLE, VIS_DATEEMBAUCHE)
+				VALUES (:matricule, :nom, :prenom, :password, :grade, :adresse, :cp, :ville, :date)');
 				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
 				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
 				$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
@@ -91,6 +92,7 @@ if (isset($_GET['matricule'])) {
 				$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
 				$query->bindValue(':cp', $cp, PDO::PARAM_STR);
 				$query->bindValue(':ville', $ville, PDO::PARAM_STR);
+				$query->bindValue(':date', $date, PDO::PARAM_STR);
 				$query->execute();
 				$query->CloseCursor();
 			}else{
@@ -194,7 +196,7 @@ if (isset($_GET['matricule'])) {
 			  		?><input type="password" name="password" class="form-control" value="<?php echo $data['VIS_PASSWORD']; ?>" aria-describedby="basic-addon1" disabled><?php
 			  	}else{
 					?>
-			  		<input type="password" name="password" class="form-control" placeholder="Mot de Passe" aria-describedby="basic-addon1" disabled>
+			  		<input type="password" name="password" class="form-control" placeholder="Mot de Passe" aria-describedby="basic-addon1">
 			  		<?php
 				}
 			}
