@@ -2,7 +2,7 @@
 include '../../inc/header.php';
 include '../../inc/menu.php';
 if (isset($_GET['rapport'])) {
-	$reponse = $db->query('SELECT * FROM ppe_rapport_visite where  ORDER BY VIS_MATRICULE ASC');
+	$reponse = $db->query('SELECT * FROM ppe_rapport_visite WHERE  ORDER BY VIS_MATRICULE ASC');
 	$query=$db->prepare('SELECT * FROM ppe_rapport_visite WHERE RAP_NUM = :rapport');
 		$query->bindValue(':rapport',$_GET['rapport'], PDO::PARAM_STR);
 		$query->execute();
@@ -18,25 +18,25 @@ if (isset($_GET['rapport'])) {
   				$matricule = $_POST['matricule'];
   			}else {
   				$i++;
-  				$error.="matricule non renseigné ";
+  				$error.="Matricule non renseigné <br>";
   			}
   			if (!empty($_POST['motif'])) {
   				$motif = $_POST['motif'];
   			}else {
   				$i++;
-  				$error.="motif non renseigné ";
+  				$error.="Motif non renseigné <br>";
   			}
   			if (!empty($_POST['bilan'])) {
   				$bilan = $_POST['bilan'];
   			}else {
   				$i++;
-  				$error.="bilan non renseigné ";
+  				$error.="Bilan non renseigné <br>";
   			}
   			if (!empty($_POST['numpraticien'])) {
   				$numpraticien = $_POST['numpraticien'];
   			}else {
   				$i++;
-  				$error.="praticien non renseigné ";
+  				$error.="Praticien non renseigné <br>";
   			}
   			if ($i==0) {
   				$query=$db->prepare('UPDATE ppe_rapport_visite
@@ -67,25 +67,25 @@ if (isset($_GET['rapport'])) {
 				$num = $_POST['num'];
 			}else {
 				$i++;
-				$error.="numero non renseigné ";
+				$error.="Numéro non renseigné <br>";
 			}
 			if (!empty($_POST['motif'])) {
 				$motif = $_POST['motif'];
 			}else {
 				$i++;
-				$error.="motif non renseigné ";
+				$error.="Motif non renseigné <br>";
 			}
 			if (!empty($_POST['bilan'])) {
 				$bilan = $_POST['bilan'];
 			}else {
 				$i++;
-				$error.="bilan non renseigné ";
+				$error.="Bilan non renseigné <br>";
 			}
 			if (!empty($_POST['numpraticien'])) {
 				$numpraticien = $_POST['numpraticien'];
 			}else {
 				$i++;
-				$error.="praticien non renseigné ";
+				$error.="Praticien non renseigné <br>";
 			}
 			if ($i==0) {
 				$query=$db->prepare('INSERT INTO ppe_rapport_visite (VIS_MATRICULE, RAP_NUM, RAP_MOTIF, PRA_NUM ,RAP_BILAN)
