@@ -14,7 +14,7 @@ if (isset($_GET['matricule'])) {
 				$matricule = $_POST['matricule'];
 				$nom = $_POST['nom'];
 				$prenom = $_POST['prenom'];
-				$password = md5($_POST['password']);
+				// $password = md5($_POST['password']);
 				$adresse = $_POST['adresse'];
 				$cp = $_POST['cp'];
 				$ville = $_POST['ville'];
@@ -24,7 +24,6 @@ if (isset($_GET['matricule'])) {
 					SET VIS_MATRICULE = :matricule,
 					VIS_NOM = :nom,
 					VIS_PRENOM = :prenom,
-					VIS_PASSWORD = :password,
 					VIS_GRADE = :grade,
 					VIS_ADRESSE = :adresse,
 					VIS_CP = :cp,
@@ -33,7 +32,6 @@ if (isset($_GET['matricule'])) {
 				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
 				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
 				$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-				$query->bindValue(':password', $password, PDO::PARAM_STR);
 				$query->bindValue(':grade', $grade, PDO::PARAM_STR);
 				$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
 				$query->bindValue(':cp', $cp, PDO::PARAM_STR);
@@ -180,10 +178,10 @@ if (isset($_GET['matricule'])) {
 		  		?><input type="password" name="password" class="form-control" value="<?php echo $data['VIS_PASSWORD']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['matricule'])) {
-			  		?><input type="password" name="password" class="form-control" value="<?php echo $data['VIS_PASSWORD']; ?>" aria-describedby="basic-addon1"><?php
+			  		?><input type="password" name="password" class="form-control" value="<?php echo $data['VIS_PASSWORD']; ?>" aria-describedby="basic-addon1" disabled><?php
 			  	}else{
 					?>
-			  		<input type="password" name="password" class="form-control" placeholder="Mot de Passe" aria-describedby="basic-addon1">
+			  		<input type="password" name="password" class="form-control" placeholder="Mot de Passe" aria-describedby="basic-addon1" disabled>
 			  		<?php
 				}
 			}
