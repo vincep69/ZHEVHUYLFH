@@ -2,13 +2,56 @@
 include '../../inc/header.php';
 include '../../inc/menu.php';
 if (isset($_GET['rapport'])) {
-	$reponse = $db->query('SELECT * FROM ppe_rapport_visite where  ORDER BY VIS_MATRICULE ASC');
-	$query=$db->prepare('SELECT * FROM ppe_rapport_visite WHERE RAP_NUM = :rapport');
+	$query=$db->prepare('SELECT * FROM ppe_offrir WHERE RAP_NUM = :rapport AND VIS_MATRICULE = :matricule');
 		$query->bindValue(':rapport',$_GET['rapport'], PDO::PARAM_STR);
+		$query->bindValue(':matricule',$_GET['mat'], PDO::PARAM_STR);
 		$query->execute();
-		$data=$query->fetch();
-		$modif = 1;
-}elseif (isset($_POST['num'])) {
+		?>
+		<table class="table">
+			<thead>
+		    <th>
+					Matricule visiteur
+				</th>
+		    <th>
+					Numéro de rapport
+				</th>
+		    <th>
+					medicament
+				</th>
+				<th>
+					quantité
+				</th>
+
+			</thead>
+			<tbody>
+			<?php
+			while ($donnees = $query->fetch()) {
+				?>
+
+					<tr>
+		        <td>
+							<?php echo $donnees['VIS_MATRICULE'] ?>
+						</td>
+						<td><a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php?rapport=<?php echo $donnees['RAP_NUM'] ?>&mat=<?php echo $donnees['VIS_MATRICULE'] ?>">
+							<?php echo $donnees['RAP_NUM'] ?></a>
+						</td>
+						<td>
+							<?php echo $donnees['MED_DEPOTLEGAL'] ?>
+						</td>
+						<td>
+							<?php echo $donnees['OFF_QTE'] ?>
+						</td>
+					</tr>
+
+				<?php
+				}
+				$query->closeCursor();
+				?>
+			</tbody>
+		</table>
+		<?php
+}
+if (isset($_POST['num'])) {
 		if (isset($_POST['modif'])) {
 			if ($_POST['modif']==1) {
         $i=0;
@@ -69,32 +112,25 @@ if (isset($_GET['rapport'])) {
 				$i++;
 				$error.="numero non renseigné ";
 			}
-			if (!empty($_POST['motif'])) {
-				$motif = $_POST['motif'];
+			if (!empty($_POST['med'])) {
+				$med = $_POST['med'];
 			}else {
 				$i++;
-				$error.="motif non renseigné ";
+				$error.="med non renseigné ";
 			}
-			if (!empty($_POST['bilan'])) {
-				$bilan = $_POST['bilan'];
+			if (!empty($_POST['qte'])) {
+				$qte = $_POST['qte'];
 			}else {
 				$i++;
-				$error.="bilan non renseigné ";
-			}
-			if (!empty($_POST['numpraticien'])) {
-				$numpraticien = $_POST['numpraticien'];
-			}else {
-				$i++;
-				$error.="praticien non renseigné ";
+				$error.="quantité non renseignée ";
 			}
 			if ($i==0) {
-				$query=$db->prepare('INSERT INTO ppe_rapport_visite (VIS_MATRICULE, RAP_NUM, RAP_MOTIF, PRA_NUM ,RAP_BILAN)
-				VALUES (:matricule, :num, :motif, :numpraticien, :bilan)');
+				$query=$db->prepare('INSERT INTO ppe_offrir (VIS_MATRICULE, RAP_NUM, MED_DEPOTLEGAL, OFF_QTE)
+				VALUES (:matricule, :num, :med, :qte)');
 				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
 				$query->bindValue(':num', $num, PDO::PARAM_STR);
-				$query->bindValue(':motif', $motif, PDO::PARAM_STR);
-				$query->bindValue(':bilan', $bilan, PDO::PARAM_STR);
-				$query->bindValue(':numpraticien', $numpraticien, PDO::PARAM_STR);
+				$query->bindValue(':med', $med, PDO::PARAM_STR);
+				$query->bindValue(':qte', $qte, PDO::PARAM_STR);
 				$query->execute();
 				$query->CloseCursor();
 			}else{
@@ -105,154 +141,45 @@ if (isset($_GET['rapport'])) {
 }
 /*echo $data['VIS_NOM'];*/
 ?>
-
-<form method="post" action="rapport_upd.php">
-	<?php
-	if (isset($modif)) {
-		?><input type="hidden" name="modif" value="<?php echo $modif ?>"><?php
-	}
-	?>
-	<!-- <?php
-	if (isset($_GET['matricule'])) {
-		?><input type="hidden" name="grade" value="<?php echo $data['VIS_GRADE']; ?>"><?php
-	}
-	?> -->
+<form method="post" action="offre_medicament.php?rapport=<?php echo $_GET['rapport'] ?>&mat=<?php echo $_GET['mat'] ?>">
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 		<div class="input-group">
-		  	<span class="input-group-addon" id="basic-addon1">Matricule :</span>
-		  	<?php
-		  	if ($_SESSION['grade']<50) {
-		  		?><input type="text" name="matricule" class="form-control" value="<?php echo $data['VIS_MATRICULE']; ?>" aria-describedby="basic-addon1" disabled><?php
-		  	}else{
-		  		if (isset($_GET['rapport'])) {
-			  		?><input type="text" name="matricule" class="form-control" value="<?php echo $data['VIS_MATRICULE']; ?>" aria-describedby="basic-addon1"><?php
-			  	}else{
-					?>
-					<input type="text" name="matricule" class="form-control" placeholder="Matricule" aria-describedby="basic-addon1">
-					<?php
-				}
-		  	}
-
-		  ?>
+				<span class="input-group-addon" id="basic-addon1">Matricule :</span>
+				<input type="text" name="matricule" class="form-control" value="<?php echo $_GET['mat']; ?>" aria-describedby="basic-addon1" disabled>
+				<input type="hidden" name="matricule" value="<?php echo $_GET['mat']; ?>">
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 		<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1">Numéro de rapport :</span>
-			  <?php
-		  	if ($_SESSION['grade']<50) {
-		  		?><input type="text" name="num" class="form-control" value="<?php echo $data['RAP_NUM']; ?>" aria-describedby="basic-addon1" disabled><?php
-		  	}else{
-			  	if (isset($_GET['rapport'])) {
-			  		?><input type="text" name="num" class="form-control" value="<?php echo $data['RAP_NUM']; ?>" aria-describedby="basic-addon1"><?php
-			  	}else{
-					?>
-			  		<input type="text" name="num" class="form-control" placeholder="Numéro" aria-describedby="basic-addon1">
-			  		<?php
-				}
-			}
-		  ?>
+				<span class="input-group-addon" id="basic-addon1">Numéro de rapport :</span>
+				<input type="text" name="num" class="form-control" value="<?php echo $_GET['rapport'] ?>" aria-describedby="basic-addon1" disabled>
+				<input type="hidden" name="num" value="<?php echo $_GET['rapport'] ?>">
 		</div>
 	</div>
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 		<div class="input-group">
-		  <span class="input-group-addon" id="basic-addon1">Motif</span>
-		  <?php
-		  if ($_SESSION['grade']<50) {
-		  		?><input type="text" name="motif" class="form-control" value="<?php echo $data['RAP_MOTIF']; ?>" aria-describedby="basic-addon1" disabled><?php
-		  	}else{
-			  	if (isset($_GET['rapport'])) {
-			  		?><input type="text" name="motif" class="form-control" value="<?php echo $data['RAP_MOTIF']; ?>" aria-describedby="basic-addon1"><?php
-			  	}else{
-					?>
-			  		<input type="text" name="motif" class="form-control" placeholder="Motif" aria-describedby="basic-addon1">
-			  		<?php
-				}
-			}
-		  ?>
+		  <span class="input-group-addon" id="basic-addon1">médicament</span>
+			<select name="med" class="form-control">
+		    <?php
+				$medics = $db->query('SELECT * FROM ppe_medicament ORDER BY MED_DEPOTLEGAL');
+		    while ($optionmedics = $medics->fetch()) {
+		      ?>
+		      <option value="<?php echo $optionmedics['MED_DEPOTLEGAL']; ?>"><?php echo $optionmedics['MED_DEPOTLEGAL']." ".$optionmedics['MED_NOMCOMMERCIAL']; ?></option>
+		      <?php
+		    }
+		    $medics->closeCursor();
+		    ?>
+		  </select>
 		</div>
 	</div>
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 		<div class="input-group">
-		  <span class="input-group-addon" id="basic-addon1">Praticien</span>
-		  <?php
-			$praticiens = $db->query('SELECT * FROM ppe_praticien ORDER BY PRA_NUM');
-		  if ($_SESSION['grade']<50) {
-		  		?><input type="text" name="numpraticien" class="form-control" value="<?php echo $data['PRA_NUM']; ?>" aria-describedby="basic-addon1" disabled><?php
-		  	}else{
-			  	if (isset($_GET['rapport'])) {
-			  		?>
-						<!-- <input type="text" name="numpraticien" class="form-control" value="<?php echo $data['PRA_NUM']; ?>" aria-describedby="basic-addon1"> -->
-						<select name="numpraticien" class="form-control">
-							<?php
-							while ($optionpraticiens = $praticiens->fetch()) {
-								if ($optionpraticiens['PRA_NUM']==$data['PRA_NUM']) {
-									?>
-									<option selected value="<?php echo $optionpraticiens['PRA_NUM']; ?>"><?php echo $optionpraticiens['PRA_NUM']." ".$optionpraticiens['PRA_NOM']." ".$optionpraticiens['PRA_PRENOM']; ?></option>
-									<?php
-								}else{
-									?>
-							  	<option value="<?php echo $optionpraticiens['PRA_NUM']; ?>"><?php echo $optionpraticiens['PRA_NUM']." ".$optionpraticiens['PRA_NOM']." ".$optionpraticiens['PRA_PRENOM']; ?></option>
-									<?php
-								}
-							}
-							$praticiens->closeCursor();
-							?>
-						</select>
-						<?php
-			  	}else{
-					?>
-			  		<!-- <input type="text" name="numpraticien" class="form-control" placeholder="numéro" aria-describedby="basic-addon1"> -->
-						<select name="numpraticien" class="form-control">
-							<?php
-							while ($optionpraticiens = $praticiens->fetch()) {
-								?>
-						  	<option value="<?php echo $optionpraticiens['PRA_NUM']; ?>"><?php echo $optionpraticiens['PRA_NUM']." ".$optionpraticiens['PRA_NOM']." ".$optionpraticiens['PRA_PRENOM']; ?></option>
-								<?php
-							}
-							$praticiens->closeCursor();
-							?>
-						</select>
-			  		<?php
-				}
-			}
-		  ?>
+		  <span class="input-group-addon" id="basic-addon1">quantité</span>
+			<input type="number" name="qte" class="form-control" aria-describedby="basic-addon1">
 		</div>
 	</div>
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<div class="input-group">
-		  <span class="input-group-addon" id="basic-addon1">Bilan :</span>
-		  <?php
-		  if ($_SESSION['grade']<50) {
-		  		?><textarea type="text" name="bilan" class="form-control" value="<?php echo $data['RAP_BILAN']; ?>" aria-describedby="basic-addon1" disabled><?php echo $data['RAP_BILAN']; ?></textarea><?php
-		  	}else{
-			  	if (isset($_GET['rapport'])) {
-			  		?><textarea type="text" name="bilan" class="form-control" value="<?php echo $data['RAP_BILAN']; ?>" aria-describedby="basic-addon1"><?php echo $data['RAP_BILAN']; ?></textarea><?php
-			  	}else{
-					?>
-			  		<textarea type="text" name="bilan" class="form-control" placeholder="Bilan" aria-describedby="basic-addon1"></textarea>
-			  		<?php
-				}
-			}
-		  ?>
-		</div>
-	</div>
-	<div class="clearfix"></div>
-	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-	<?php
-	if (isset($_GET['rapport'])) {
-	?>
-		<input type="submit" value="sauvegarder" class="btn btn-primary"/>
-	<?php
-	}else{
-	 ?>
-	 <input type="submit" value="créer" class="btn btn-primary"/>
-	 <?php
-	 }
-	  ?>
-	</div>
+	<input type="submit" value="ajouter" class="btn btn-primary"/>
 </form>
-
 <?php
 include '../../inc/footer.php';
 ?>

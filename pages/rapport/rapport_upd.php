@@ -268,7 +268,7 @@ if (isset($_GET['rapport'])) {
 	  ?>
 	</div>
 </form>
-
+<a href="/ZHEVHUYLFH/pages/rapport/offre_medicament.php?rapport=<?php echo $data['RAP_NUM'] ?>&mat=<?php echo $data['VIS_MATRICULE'] ?>" class="btn btn-danger">ajouter des médicaments</a>
 <?php
 include '../../inc/footer.php';
 ?>
