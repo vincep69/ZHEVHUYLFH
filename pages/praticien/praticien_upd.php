@@ -97,12 +97,22 @@ if (isset($_GET['numero'])) {
 		        $query->CloseCursor();
 			}else{
 				echo '<div class="alert alert-warning" role="alert">'.$error.'</div>';
-				
+
 			}
 		}
 }
 ?>
-
+<?php
+if (isset($_GET['numero'])) {
+?>
+<h1>Modification de praticien</h1>
+<?php
+}else{
+	?>
+	<h1>Création de praticien</h1>
+	<?php
+}
+ ?>
 <form method="post" action="praticien_upd.php">
 	<?php
 	if (isset($modif)) {
