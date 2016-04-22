@@ -42,15 +42,15 @@ if (isset($_GET['rapport'])) {
   				$query=$db->prepare('UPDATE ppe_rapport_visite
   					SET VIS_MATRICULE = :matricule,
   					RAP_NUM = :num,
-  					RAP_MOTIF = :motif,
   					PRA_NUM = :numpraticien,
   					RAP_BILAN = :bilan,
+  					RAP_MOTIF = :motif
   					WHERE RAP_NUM = :num');
     				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
     				$query->bindValue(':num', $num, PDO::PARAM_STR);
-    				$query->bindValue(':motif', $motif, PDO::PARAM_STR);
     				$query->bindValue(':numpraticien', $numpraticien, PDO::PARAM_STR);
     				$query->bindValue(':bilan', $bilan, PDO::PARAM_STR);
+    				$query->bindValue(':motif', $motif, PDO::PARAM_STR);
 		        $query->execute();
 		        $query->CloseCursor();
 						echo "yes";
