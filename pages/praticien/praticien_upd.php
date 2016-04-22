@@ -42,29 +42,64 @@ if (isset($_GET['numero'])) {
 		        $query->CloseCursor();
 						}
 		}else{
+			$i=0;
+			$error="";
 			$numero = $_POST['numero'];
-			$nom = $_POST['nom'];
-			$prenom = $_POST['prenom'];
-			$adresse = $_POST['adresse'];
-			$cp = $_POST['cp'];
-			$ville = $_POST['ville'];
-			$notoriete = $_POST['notoriete'];
-			$code = $_POST['code'];
-
-	        $query=$db->prepare('INSERT INTO ppe_praticien (PRA_NUM, PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE, TYP_CODE)
-	        VALUES (:numero, :nom, :prenom, :adresse, :cp, :ville, :notoriete, :code)');
-			$query->bindValue(':numero', $numero, PDO::PARAM_STR);
-			$query->bindValue(':nom', $nom, PDO::PARAM_STR);
-			$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-			$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
-			$query->bindValue(':cp', $cp, PDO::PARAM_STR);
-			$query->bindValue(':ville', $ville, PDO::PARAM_STR);
-			$query->bindValue(':notoriete', $notoriete, PDO::PARAM_STR);
-			$query->bindValue(':code', $code, PDO::PARAM_STR);
-	        $query->execute();
-	        $query->CloseCursor();
+			if (!empty($_POST['nom'])) {
+				$nom = $_POST['nom'];
+			}else{
+				$i++;
+				$error.="nom non renseigné ";
+			}
+			if (!empty($_POST['prenom'])) {
+				$prenom = $_POST['prenom'];
+			}else{
+				$i++;
+				$error.="prenom non renseigné ";
+			}if (!empty($_POST['adresse'])) {
+				$adresse = $_POST['adresse'];
+			}else{
+				$i++;
+				$error.="adresse non renseigné ";
+			}if (!empty($_POST['cp'])) {
+				$cp = $_POST['cp'];
+			}else{
+				$i++;
+				$error.="code postal non renseigné ";
+			}if (!empty($_POST['ville'])) {
+				$ville = $_POST['ville'];
+			}else{
+				$i++;
+				$error.="ville non renseigné ";
+			}if (!empty($_POST['notoriete'])) {
+				$notoriete = $_POST['notoriete'];
+			}else{
+				$i++;
+				$error.="coefficient de notoriété non renseigné ";
+			}if (!empty($_POST['code'])) {
+				$code = $_POST['code'];
+			}else{
+				$i++;
+				$error.="code non renseigné ";
+			}
+			if ($i==0) {
+		        $query=$db->prepare('INSERT INTO ppe_praticien (PRA_NUM, PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE, TYP_CODE)
+		        VALUES (:numero, :nom, :prenom, :adresse, :cp, :ville, :notoriete, :code)');
+				$query->bindValue(':numero', $numero, PDO::PARAM_STR);
+				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
+				$query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+				$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
+				$query->bindValue(':cp', $cp, PDO::PARAM_STR);
+				$query->bindValue(':ville', $ville, PDO::PARAM_STR);
+				$query->bindValue(':notoriete', $notoriete, PDO::PARAM_STR);
+				$query->bindValue(':code', $code, PDO::PARAM_STR);
+		        $query->execute();
+		        $query->CloseCursor();
+			}else{
+				echo '<div class="alert alert-warning" role="alert">'.$error.'</div>';
+				
+			}
 		}
-
 }
 ?>
 
