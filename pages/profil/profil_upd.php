@@ -19,6 +19,8 @@ if (isset($_GET['matricule'])) {
 				$cp = $_POST['cp'];
 				$ville = $_POST['ville'];
 				$grade = $_POST['grade'];
+				$numsecteur = $_POST['numsecteur'];
+				$numlabo = $_POST['numlabo'];
 
 				$query=$db->prepare('UPDATE ppe_visiteur
 					SET VIS_MATRICULE = :matricule,
@@ -27,7 +29,9 @@ if (isset($_GET['matricule'])) {
 					VIS_GRADE = :grade,
 					VIS_ADRESSE = :adresse,
 					VIS_CP = :cp,
-					VIS_VILLE = :ville
+					VIS_VILLE = :ville,
+					SEC_CODE = :secteur,
+					LAB_CODE = :labo
 					WHERE VIS_MATRICULE = :matricule');
 				$query->bindValue(':matricule', $matricule, PDO::PARAM_STR);
 				$query->bindValue(':nom', $nom, PDO::PARAM_STR);
@@ -36,6 +40,8 @@ if (isset($_GET['matricule'])) {
 				$query->bindValue(':adresse', $adresse, PDO::PARAM_STR);
 				$query->bindValue(':cp', $cp, PDO::PARAM_STR);
 				$query->bindValue(':ville', $ville, PDO::PARAM_STR);
+				$query->bindValue(':labo', $numlabo, PDO::PARAM_STR);
+				$query->bindValue(':secteur', $numsecteur, PDO::PARAM_STR);
 		        $query->execute();
 		        $query->CloseCursor();
 					}
@@ -279,7 +285,7 @@ if (isset($_GET['matricule'])) {
 		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="numsecteur" class="form-control" value="<?php echo $data['SEC_CODE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
-			  	if (isset($_GET['rapport'])) {
+			  	if (isset($_GET['matricule'])) {
 			  		?>
 						<!-- <input type="text" name="numsecteur" class="form-control" value="<?php echo $data['SEC_CODE']; ?>" aria-describedby="basic-addon1"> -->
 						<select name="numsecteur" class="form-control">
@@ -326,7 +332,7 @@ if (isset($_GET['matricule'])) {
 		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="numlabo" class="form-control" value="<?php echo $data['LAB_CODE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
-			  	if (isset($_GET['rapport'])) {
+			  	if (isset($_GET['matricule'])) {
 			  		?>
 						<!-- <input type="text" name="numlabo" class="form-control" value="<?php echo $data['LAB_CODE']; ?>" aria-describedby="basic-addon1"> -->
 						<select name="numlabo" class="form-control">
