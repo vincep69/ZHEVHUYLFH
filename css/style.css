@@ -8,3 +8,21 @@
 form div{
   margin-bottom: 5px;
 }
+.accueil{
+    font-size: 25px;
+    text-align: justify;
+}
+.accueil h1{
+    font-size: 50px;
+    font-weight: bold;
+}
+.accueil h4{
+    font-size: 32px;
+    font-style: italic;
+}
+h1, h4{
+    text-align: center;
+}
+h4{
+    margin-bottom: 2%;
+}
