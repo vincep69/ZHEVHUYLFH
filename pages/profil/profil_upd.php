@@ -104,6 +104,19 @@ if (isset($_GET['matricule'])) {
 /*echo $data['VIS_NOM'];*/
 
 	?>
+
+	<?php
+	if (isset($_GET['matricule'])) {
+	?>
+	<h1>Modification d'employé</h1>
+	<?php
+	}else{
+		?>
+		<h1>Création d'employé</h1>
+		<?php
+	}
+	 ?>
+
 <form method="post" action="profil_upd.php">
 	<?php
 	if (isset($modif)) {
@@ -263,5 +276,67 @@ if (isset($_GET['matricule'])) {
 </form>
 
 <?php
+if (isset($_GET['matricule'])) {
+  $reponse=$db->prepare('SELECT * FROM ppe_rapport_visite WHERE VIS_MATRICULE = :matricule');
+  $reponse->bindValue(':matricule',$_GET['matricule'], PDO::PARAM_STR);
+  $reponse->execute();
+
+?>
+<h2>Rapports</h2>
+<table class="table">
+	<thead>
+    <th>
+			Matricule visiteur
+		</th>
+    <th>
+			Numéro de rapport
+		</th>
+    <th>
+			matricule praticien
+		</th>
+		<th>
+			date
+		</th>
+		<th>
+			bilan
+		</th>
+    <th>
+			motif
+		</th>
+	</thead>
+	<tbody>
+	<?php
+	while ($donnees = $reponse->fetch()) {
+		?>
+
+			<tr>
+        <td>
+					<?php echo $donnees['VIS_MATRICULE'] ?>
+				</td>
+				<td><a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php?rapport=<?php echo $donnees['RAP_NUM'] ?>&mat=<?php echo $donnees['VIS_MATRICULE'] ?>">
+					<?php echo $donnees['RAP_NUM'] ?></a>
+				</td>
+				<td>
+					<?php echo $donnees['PRA_NUM'] ?>
+				</td>
+				<td>
+					<?php echo $donnees['RAP_DATE'] ?>
+				</td>
+        <td>
+					<?php echo $donnees['RAP_BILAN'] ?>
+				</td>
+        <td>
+					<?php echo $donnees['RAP_MOTIF'] ?>
+				</td>
+			</tr>
+
+		<?php
+		}
+		$reponse->closeCursor();
+		?>
+	</tbody>
+</table>
+<?php
+}
 include '../../inc/footer.php';
 ?>

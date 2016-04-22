@@ -28,7 +28,7 @@ if (isset($_GET['matvis'])) {
 }
 
 ?>
-
+<h1>Liste des rapports</h1>
 <table class="table">
 	<thead>
     <th>

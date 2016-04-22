@@ -105,6 +105,17 @@ if (isset($_GET['rapport'])) {
 }
 /*echo $data['VIS_NOM'];*/
 ?>
+<?php
+if (isset($_GET['rapport'])) {
+?>
+<h1>Modification de rapport</h1>
+<?php
+}else{
+	?>
+	<h1>Création de rapport</h1>
+	<?php
+}
+ ?>
 
 <form method="post" action="rapport_upd.php">
 	<?php
@@ -268,7 +279,13 @@ if (isset($_GET['rapport'])) {
 	  ?>
 	</div>
 </form>
+<?php
+if (isset($_GET['rapport'])) {
+?>
 <a href="/ZHEVHUYLFH/pages/rapport/offre_medicament.php?rapport=<?php echo $data['RAP_NUM'] ?>&mat=<?php echo $data['VIS_MATRICULE'] ?>" class="btn btn-danger">ajouter des médicaments</a>
+<?php
+}
+ ?>
 <?php
 include '../../inc/footer.php';
 ?>
