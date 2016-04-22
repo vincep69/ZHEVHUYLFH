@@ -152,7 +152,7 @@ if (isset($_GET['rapport'])) {
 						<input type="hidden" name="num" value="<?php echo $data['RAP_NUM']; ?>">
 						<?php
 			  	}else{
-						$numerorapport = 0;
+						$numerorapport = 1;
 						$numrapport=$db->prepare('SELECT * FROM ppe_rapport_visite WHERE VIS_MATRICULE = :matricule ORDER BY RAP_NUM ASC');
 						$numrapport->bindValue(':matricule',$_SESSION['login'], PDO::PARAM_STR);
 						$numrapport->execute();
