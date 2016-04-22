@@ -16,28 +16,28 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Médicament<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/medicament/index.php">Liste</a>
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/medicament/">Liste</a>
                 <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/medicament/medicament_upd.php">Création</a>
             </ul>
         </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Praticien<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/praticien/index.php">Liste</a>
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/praticien/">Liste</a>
                 <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/praticien/praticien_upd.php">Création</a>
             </ul>
         </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employé<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/profil/index.php">Liste</a>
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/profil/">Liste</a>
                 <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/profil/profil_upd.php">Création</a>
             </ul>
         </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rapport<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/rapport/index.php">Liste</a>
+                <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/rapport/">Liste</a>
                 <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php">Création</a>
             </ul>
         </li>
