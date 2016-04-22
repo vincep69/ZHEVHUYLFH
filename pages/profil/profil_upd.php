@@ -97,15 +97,15 @@ if (isset($_GET['matricule'])) {
 				$query->CloseCursor();
 			}else{
 				echo '<div class="alert alert-warning" role="alert">'.$error.'</div>';
-				
+
 			}
 		}
 
 }
 
 /*echo $data['VIS_NOM'];*/
-?>
 
+	?>
 <form method="post" action="profil_upd.php">
 	<?php
 	if (isset($modif)) {
@@ -251,7 +251,17 @@ if (isset($_GET['matricule'])) {
 	</div>
 </div> -->
 	<div class="clearfix"></div>
-		<input type="submit" value="créer" class="btn btn-primary"/>
+	<?php
+	if (isset($_GET['matricule'])) {
+	?>
+		<input type="submit" value="sauvegarder" class="btn btn-primary"/>
+	<?php
+	}else{
+	 ?>
+	 <input type="submit" value="créer" class="btn btn-primary"/>
+	 <?php
+	 }
+	  ?>
 </form>
 
 <?php
