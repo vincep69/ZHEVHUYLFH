@@ -7,6 +7,7 @@ if (isset($_GET['rapport'])) {
 		$query->bindValue(':matricule',$_GET['mat'], PDO::PARAM_STR);
 		$query->execute();
 		?>
+		<h1>Offres de médicaments</h1>
 		<table class="table">
 			<thead>
 		    <th>
@@ -141,6 +142,7 @@ if (isset($_POST['num'])) {
 }
 /*echo $data['VIS_NOM'];*/
 ?>
+
 <form method="post" action="offre_medicament.php?rapport=<?php echo $_GET['rapport'] ?>&mat=<?php echo $_GET['mat'] ?>">
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 		<div class="input-group">

@@ -19,7 +19,7 @@ include '../inc/menu.php';
 </div>
 <div class="col-sm-6 col-md-3">
 		<div class="thumbnail tile tile-medium tile-green">
-				<a href="#" class="fa-links">
+				<a href="/ZHEVHUYLFH/pages/rapport/" class="fa-links">
 					<h1>Rapports</h1>
 					<i class="fa fa-3x fa-files-o"></i>
 				</a>
@@ -27,29 +27,61 @@ include '../inc/menu.php';
 </div>
 <div class="col-sm-6 col-md-3">
 		<div class="thumbnail tile tile-medium tile-orange">
-				<a href="#" class="fa-links">
+				<a href="/ZHEVHUYLFH/pages/profil/" class="fa-links">
 					<h1>Visiteurs</h1>
-					<i class="fa fa-3x fa-user"></i>
+					<i class="fa fa-3x fa-users"></i>
 				</a>
 		</div>
 </div>
 <div class="col-sm-6 col-md-3">
 		<div class="thumbnail tile tile-medium tile-blue">
-				<a href="#" class="fa-links">
+				<a href="/ZHEVHUYLFH/pages/praticien/" class="fa-links">
 					<h1>Praticiens</h1>
-					<i class="fa fa-3x fa-user-md"></i>
+					<i class="fa fa-3x fa-stethoscope"></i>
 				</a>
 		</div>
 </div>
 <div class="col-sm-6 col-md-3">
 		<div class="thumbnail tile tile-medium tile-red">
-				<a href="#" class="fa-links">
+				<a href="/ZHEVHUYLFH/pages/medicament/" class="fa-links">
 					<h1>Médicaments</h1>
 					<i class="fa fa-3x fa-medkit"></i>
 				</a>
 		</div>
 </div>
 
+<div class="col-sm-6 col-md-3">
+		<div class="thumbnail tile tile-medium tile-green">
+				<a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php" class="fa-links">
+					<h1>Nouveau rapport</h1>
+					<i class="fa fa-3x fa-file"></i>
+				</a>
+		</div>
+</div>
+<div class="col-sm-6 col-md-3">
+		<div class="thumbnail tile tile-medium tile-orange">
+				<a href="/ZHEVHUYLFH/pages/profil/profil_upd.php" class="fa-links">
+					<h1>Nouveau visiteur</h1>
+					<i class="fa fa-3x fa-user"></i>
+				</a>
+		</div>
+</div>
+<div class="col-sm-6 col-md-3">
+		<div class="thumbnail tile tile-medium tile-blue">
+				<a href="/ZHEVHUYLFH/pages/praticien/praticien_upd.php" class="fa-links">
+					<h1>Nouveau praticien</h1>
+					<i class="fa fa-3x fa-user-md"></i>
+				</a>
+		</div>
+</div>
+<div class="col-sm-6 col-md-3">
+		<div class="thumbnail tile tile-medium tile-red">
+				<a href="/ZHEVHUYLFH/pages/medicament/medicament_upd.php" class="fa-links">
+					<h1>Nouveau médicament</h1>
+					<i class="fa fa-3x fa-medkit"></i>
+				</a>
+		</div>
+</div>
 <?php
 include '../inc/footer.php';
 ?>
