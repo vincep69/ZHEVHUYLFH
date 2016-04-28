@@ -41,7 +41,18 @@
                 <li class="dropdown-perso"><a href="/ZHEVHUYLFH/pages/rapport/rapport_upd.php">Création</a>
             </ul>
         </li>
-
+        <?php
+        $profils=$db->prepare('SELECT * FROM ppe_visiteur WHERE VIS_MATRICULE = :matricule');
+      		$profils->bindValue(':matricule',$_SESSION['login'], PDO::PARAM_STR);
+      		$profils->execute();
+      		$profil=$profils->fetch();
+        ?>
+        <li>
+            <a href="/ZHEVHUYLFH/deco.php">Connecté en tant que <?php echo $profil['VIS_PRENOM']." ".$profil['VIS_NOM'] ?></a>
+        </li>
+        <li>
+            <a href="/ZHEVHUYLFH/deco.php">Déconnexion</a>
+        </li>
         <!-- <li>
             <a href="/ZHEVHUYLFH/pages/medicament/index.php">Med Liste</a>
         </li>

@@ -128,7 +128,7 @@ if (isset($_GET['numero'])) {
 		<div class="input-group">
 		  	<span class="input-group-addon" id="basic-addon1">Numéro :</span>
 		  	<?php
-		  	if ($_SESSION['grade']<50) {
+		  	if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="numero" class="form-control" value="<?php echo $data['PRA_NUM']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 		  		if (isset($_GET['numero'])) {
@@ -147,7 +147,7 @@ if (isset($_GET['numero'])) {
 		<div class="input-group">
 			  <span class="input-group-addon" id="basic-addon1">Nom :</span>
 			  <?php
-		  	if ($_SESSION['grade']<50) {
+		  	if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="nom" class="form-control" value="<?php echo $data['PRA_NOM']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['numero'])) {
@@ -165,7 +165,7 @@ if (isset($_GET['numero'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Prénom :</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="prenom" class="form-control" value="<?php echo $data['PRA_PRENOM']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['numero'])) {
@@ -183,7 +183,7 @@ if (isset($_GET['numero'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Adresse</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="adresse" class="form-control" value="<?php echo $data['PRA_ADRESSE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['numero'])) {
@@ -201,7 +201,7 @@ if (isset($_GET['numero'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Code Postal</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="cp" class="form-control" value="<?php echo $data['PRA_CP']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['numero'])) {
@@ -219,7 +219,7 @@ if (isset($_GET['numero'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Ville</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="ville" class="form-control" value="<?php echo $data['PRA_VILLE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['numero'])) {
@@ -237,7 +237,7 @@ if (isset($_GET['numero'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Coefficient de notoriété</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="notoriete" class="form-control" value="<?php echo $data['PRA_COEFNOTORIETE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['numero'])) {
@@ -255,7 +255,7 @@ if (isset($_GET['numero'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Code</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="code" class="form-control" value="<?php echo $data['TYP_CODE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['numero'])) {

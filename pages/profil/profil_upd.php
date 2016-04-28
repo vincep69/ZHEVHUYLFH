@@ -154,7 +154,7 @@ if (isset($_GET['matricule'])) {
 		<div class="input-group">
 		  	<span class="input-group-addon" id="basic-addon1">Matricule :</span>
 		  	<?php
-		  	if ($_SESSION['grade']<50) {
+		  	if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="matricule" class="form-control" value="<?php echo $data['VIS_MATRICULE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 		  		if (isset($_GET['matricule'])) {
@@ -173,7 +173,7 @@ if (isset($_GET['matricule'])) {
 		<div class="input-group">
 			  <span class="input-group-addon" id="basic-addon1">Nom :</span>
 			  <?php
-		  	if ($_SESSION['grade']<50) {
+		  	if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="nom" class="form-control" value="<?php echo $data['VIS_NOM']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['matricule'])) {
@@ -191,7 +191,7 @@ if (isset($_GET['matricule'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Prénom :</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="prenom" class="form-control" value="<?php echo $data['VIS_PRENOM']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['matricule'])) {
@@ -209,7 +209,7 @@ if (isset($_GET['matricule'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Mot de Passe</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="password" name="password" class="form-control" value="<?php echo $data['VIS_PASSWORD']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['matricule'])) {
@@ -227,7 +227,7 @@ if (isset($_GET['matricule'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Adresse</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="adresse" class="form-control" value="<?php echo $data['VIS_ADRESSE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['matricule'])) {
@@ -245,7 +245,7 @@ if (isset($_GET['matricule'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Code Postal</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="cp" class="form-control" value="<?php echo $data['VIS_CP']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['matricule'])) {
@@ -263,7 +263,7 @@ if (isset($_GET['matricule'])) {
 		<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">Ville</span>
 		  <?php
-		  if ($_SESSION['grade']<50) {
+		  if ($_SESSION['grade']<10) {
 		  		?><input type="text" name="ville" class="form-control" value="<?php echo $data['VIS_VILLE']; ?>" aria-describedby="basic-addon1" disabled><?php
 		  	}else{
 			  	if (isset($_GET['matricule'])) {
