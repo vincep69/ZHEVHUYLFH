@@ -1,5 +1,6 @@
 <?php
 echo'test';
+echo 'test2';
 include 'inc/header.php';
 ?>
 <h1>
